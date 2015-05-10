@@ -2,6 +2,7 @@ import random
 import math
 import sys
 
+
 if len(sys.argv)==4:
     random.seed(sys.argv[3])
 
@@ -24,12 +25,19 @@ def count_hits(N,L):
     return count
             
 def est_pi(N, L):
-    if L<=1:
         hits = count_hits(N,L)
         pi_res = 2*L*N/hits
+        pair = pi_res, hits
+        (res, hit)=pair
         return pi_res, hits
-    else : 
-        return 'Nog niet klaar'
+        
 
-print("Pi = " + str(est_pi(int(sys.argv[1]), int(sys.argv[2]))))
+if len(sys.argv)==1:
+    print('Use: estimate_pi.py N L')
+elif float(sys.argv[2])>1:
+    print('AssertionError: L should be smaller than 1')
+else:
+   pair = est_pi(int(sys.argv[1]), float(sys.argv[2]))
+   (res, hit) = pair
+   print(str(hit) +' hits in '+ str(sys.argv[1]) + ' tries\nPi = ' + str(res))
     
