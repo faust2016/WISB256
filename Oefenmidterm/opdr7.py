@@ -1,5 +1,9 @@
 draaiingen = input()
-
+draai =[]
+for i in range(0,int(draaiingen)):
+    ding=input().split()
+    draai.append(ding)
+    
 dobbelsteen= ["beneden", "links", "omhoog", "omlaag", "rechts", "boven"]
 def omhoog():
     temp0 = dobbelsteen[0] 
@@ -41,16 +45,15 @@ def rechts():
     dobbelsteen[3] = temp1
     dobbelsteen[4] = temp3
 
-for i in range(0, int(draaiingen)):
-    draai = input()
-    if draai == 'omhoog':
+for i in draai:
+    if i ==['omhoog']:
         omhoog()
-    elif draai =='omlaag':
+    elif i ==['omlaag']:
         omlaag()
-    elif draai=='rechts':
-        rechts()
-    elif draai=='links':
+    elif i ==['rechts']:
         links()
+    elif i ==['links']:
+        rechts()
 
 for i in range(0,6):
     if dobbelsteen[i]=='boven':
