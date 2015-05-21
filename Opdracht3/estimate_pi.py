@@ -32,18 +32,18 @@ def est_pi(N, L):
 def est_pi_long(N,L):
     hits = count_hits(N,L)
     P=hits/N
-    pi_res_long = 2*L/(P -1) - 2*(math.sqrt((L**2-1)) + math.asin(1/L))/(P-1)
-    #pi_res_long=2/P*math.acos(1/L)+2*L/P*(1-math.sqrt(1-(1/L)**2))
+    #pi_res_long = 2*L/(P -1) - 2*(math.sqrt((L**2-1)) + math.asin(1/L))/(P-1)
+    pi_res_long=2/P*math.acos(1/L)+2*L/P*(1-math.sqrt(1-(1/L)**2))
     return pi_res_long, hits
         
 
 if len(sys.argv)==1 or len(sys.argv)==2:
     print('Use: estimate_pi.py N L')
 elif float(sys.argv[2])>1:
-    print('AssertionError: L should be smaller than 1')
-    #pair = est_pi_long(int(sys.argv[1]), float(sys.argv[2]))
-    #(res, hit) = pair
-    #print(str(hit) +' hits in '+ str(sys.argv[1]) + ' tries\nPi = ' + str(res))
+    #print('AssertionError: L should be smaller than 1')
+    pair = est_pi_long(int(sys.argv[1]), float(sys.argv[2]))
+    (res, hit) = pair
+    print(str(hit) +' hits in '+ str(sys.argv[1]) + ' tries\nPi = ' + str(res))
 else:
    pair = est_pi(int(sys.argv[1]), float(sys.argv[2]))
    (res, hit) = pair
