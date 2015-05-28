@@ -19,5 +19,28 @@ class Vector:
         new=[]
         for i in range(0,len(self._data)):
             new.append(self._data[i]+other._data[i])
+        return Vector(len(new),new)
+        
+    def lincomb(self,other,alpha,beta):
+        new=[]
+        for i in range(0,len(self._data)):
+            new.append(alpha *self._data[i]+ beta *other._data[i])
+        return Vector(len(new),new)
+    
+    def scalar(self,alpha):
+        new=[]
+        for i in range(0,len(self._data)):
+            new.append(alpha *self._data[i])
+        return Vector(len(new),new)
+        
+    def inner(self,other):
+        new=0
+        for i in range(0,len(self._data)):
+            new+=self._data[i]*other._data[i]
         return new
         
+    def norm(self):
+        new=0
+        for i in range(0,len(self._data)):
+            new+=self._data[i]**2
+        return new**0.5
