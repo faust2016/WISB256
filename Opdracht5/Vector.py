@@ -58,14 +58,14 @@ class Vector:
         for i in range(0,len(self._data)):
             new.append(self._data[i]-other._data[i])
         return Vector(len(new),new)
+    
+    def normalize(self):
+        return self.scalar(1/self.norm())
         
         
 def GrammSchmidt(V):
-    new=[]
     for i in range(len(V)):
-        a=V[i].scalar(1/(V[i].norm()))
-        for j in range(0,i):
-            if i!=0:
-                a=a - V[i].projection(new[j])
-        new.append(a)
-    return new
+        V[i]=V[i].normalize()
+        for j in range(i+1,len(V)):
+            V[j]=V[j] - V[i].projection(V[j])
+    return V
