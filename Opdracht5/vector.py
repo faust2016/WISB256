@@ -44,3 +44,22 @@ class Vector:
         for i in range(0,len(self._data)):
             new+=self._data[i]**2
         return new**0.5
+    
+    def projection(self,other):
+        new=[]
+        for i in range(0,len(self._data)):
+            new.append(self._data[i]*Vector.inner(self,other)/Vector.norm(self))
+        return Vector(len(new),new)
+    
+    def __len__(self):
+         return len(self._data)
+        
+def GrammSchmidt(V):
+    new=[]
+    for i in range(0,len(V)):
+        a=V[i]
+        for j in range(0,i):
+            if j!=0 and i!=0:
+                a-=Vector.projection(new[j],V[i])
+        new.append(a)
+    return new
