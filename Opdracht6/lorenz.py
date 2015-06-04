@@ -1,5 +1,5 @@
 from scipy.integrate import odeint
-from numpy import arange
+from numpy import *
 
 class Lorenz:
     def __init__(self, start, sigma = 10, rho = 28, beta = 8/3):
@@ -22,3 +22,24 @@ class Lorenz:
         tWaardes=arange(0,T+dt,dt)
         a=odeint(self.func,self.begin, tWaardes)
         return a
+        
+    def df(self,u):
+        [x,y,z] = u
+        b = arange(9).reshape(3,3)
+        b[0,0] = -1*self.sigma
+        b[0,1] = self.sigma
+        b[0,2] = 0
+        b[1,0] = self.rho-z
+        b[1,1] = -1
+        b[1,2] = x
+        b[2,0] = y
+        b[2,1] = x
+        b[2,2] = -1*self.beta
+        return b
+        
+    def isStable(self,u):
+       eigv = linalg.eigvals(df(u))
+       for i in range(len(eigv)):
+           if eigv[i]>=0:
+               return False
+           return True
