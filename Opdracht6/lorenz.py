@@ -38,7 +38,7 @@ class Lorenz:
         return b
         
     def isStable(self,u):
-       eigv = linalg.eigvals(df(u))
+       eigv = linalg.eigvals(self.df(u))
        for i in range(len(eigv)):
            if eigv[i]>=0:
                return False
