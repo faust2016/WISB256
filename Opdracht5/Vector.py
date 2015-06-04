@@ -39,10 +39,7 @@ class Vector:
         return new
         
     def norm(self):
-        new=0
-        for i in range(0,len(self._data)):
-            new+=self._data[i]**2
-        return new**0.5
+        return (self.inner(self))**0.5
     
     def projection(self,other):
         new=[]
